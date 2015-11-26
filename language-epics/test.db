@@ -1,0 +1,7 @@
+# Comment
+
+
+record(recordtype,   "$(MACRO):NAMEOFRECORD") {
+  field(type, "VaLuE")
+}
+

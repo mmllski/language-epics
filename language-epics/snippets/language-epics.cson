@@ -1,0 +1,10 @@
+# If you want some example snippets, check out:
+# https://github.com/atom/language-gfm/blob/master/snippets/gfm.cson
+
+'.source.db':
+  'record body':
+    'prefix': 'r'
+    'body': 'record(${1:type}, "${2:NAME}") {\n\t${3}\n}'
+  'field':
+    'prefix': 'f'
+    'body': 'field(${1:NAME},\t"${2:value}")${3}'
