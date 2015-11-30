@@ -5,6 +5,119 @@
   'record body':
     'prefix': 'r'
     'body': 'record(${1:type}, "${2:NAME}") {\n\t${3}\n}'
+
   'field':
     'prefix': 'f'
     'body': 'field(${1:NAME},\t"${2:value}")${3}'
+
+  'array analog input':
+    'prefix': 'raai'
+    'body': 'record(aai, "${1:NAME}") {\n\t${2}\n}'
+
+  'array analog output':
+    'prefix': 'raao'
+    'body': 'record(aai, "${1:NAME}") {\n\t${2}\n}'
+
+  'analog input':
+    'prefix': 'rai'
+    'body': 'record(aai, "${1:NAME}") {\n\t${2}\n}'
+
+  'analog output':
+    'prefix': 'rao'
+    'body': 'record(aai, "${1:NAME}") {\n\t${2}\n}'
+
+  'array subroutine':
+    'prefix': 'ras'
+    'body': 'record(asub, "${1:NAME}") {\n\t${2}\n}'
+
+  'binary input':
+    'prefix': 'rbi'
+    'body': 'record(bi, "${1:NAME}") {\n\t${2}\n}'
+
+  'binary output':
+    'prefix': 'rbo'
+    'body': 'record(bo, "${1:NAME}") {\n\t${2}\n}'
+
+  'calculation':
+    'prefix': 'rc'
+    'body': 'record(calc, "${1:NAME}") {\n\t${2}\n}'
+
+  'calculation output':
+    'prefix': 'rco'
+    'body': 'record(calcout, "${1:NAME}") {\n\t${2}\n}'
+
+  'compression':
+    'prefix': 'rcomp'
+    'body': 'record(compress, "${1:NAME}") {\n\t${2}\n}'
+
+  'data fanout':
+    'prefix': 'rdf'
+    'body': 'record(dfanout, "${1:NAME}") {\n\t${2}\n}'
+
+  'event':
+    'prefix': 'rev'
+    'body': 'record(event, "${1:NAME}") {\n\t${2}\n}'
+
+  'fanout':
+    'prefix': 'rf'
+    'body': 'record(fanout, "${1:NAME}") {\n\t${2}\n}'
+
+  'histogram':
+    'prefix': 'rh'
+    'body': 'record(histogram, "${1:NAME}") {\n\t${2}\n}'
+
+  'longin':
+    'prefix': 'rli'
+    'body': 'record(longin, "${1:NAME}") {\n\t${2}\n}'
+
+  'longout':
+    'prefix': 'rlo'
+    'body': 'record(longout, "${1:NAME}") {\n\t${2}\n}'
+
+  'multi-bit bi':
+    'prefix': 'rmbi'
+    'body': 'record(mbbi, "${1:NAME}") {\n\t${2}\n}'
+
+  'multi-bit bi direct':
+    'prefix': 'rmbid'
+    'body': 'record(mbbiDirect, "${1:NAME}") {\n\t${2}\n}'
+
+  'multi-bit bo':
+    'prefix': 'rmbo'
+    'body': 'record(mbbo, "${1:NAME}") {\n\t${2}\n}'
+
+  'multi-bit bo direct':
+    'prefix': 'rmbod'
+    'body': 'record(mbboDirect, "${1:NAME}") {\n\t${2}\n}'
+
+  'permisive':
+    'prefix': 'rp'
+    'body': 'record(permisive, "${1:NAME}") {\n\t${2}\n}'
+
+  'select':
+    'prefix': 'rsel'
+    'body': 'record(sel, "${1:NAME}") {\n\t${2}\n}'
+
+  'sequence':
+    'prefix': 'rseq'
+    'body': 'record(seq, "${1:NAME}") {\n\t${2}\n}'
+
+  'state':
+    'prefix': 'rstate'
+    'body': 'record(state, "${1:NAME}") {\n\t${2}\n}'
+
+  'string input':
+    'prefix': 'rsi'
+    'body': 'record(stringin, "${1:NAME}") {\n\t${2}\n}'
+
+  'string output':
+    'prefix': 'rso'
+    'body': 'record(stringout, "${1:NAME}") {\n\t${2}\n}'
+
+  'subb-array':
+    'prefix': 'rsub'
+    'body': 'record(sub, "${1:NAME}") {\n\t${2}\n}'
+
+  'waveform':
+    'prefix': 'rw'
+    'body': 'record(waveform, "${1:NAME}") {\n\t${2}\n}'
