@@ -1,123 +1,271 @@
 # If you want some example snippets, check out:
 # https://github.com/atom/language-gfm/blob/master/snippets/gfm.cson
 
+  ####################################
+  #### C code snippets ###
+  ####################################
+
+'.source.c':
+
+  'aSub record C header':
+    'prefix': 'asub_header'
+    'body': '''
+      #include <aSubRecord.h>
+      #include <registryFunction.h>
+      #include <epicsExport.h>
+      '''
+
+  'aSub Record C subroutine':
+    'prefix': 'asub_code'
+    'body': '''
+      static long ${1:my_asub_routine}(aSubRecord *precord)
+      {
+      \t${2:// insert code here}
+      \treturn 0;
+      }
+      epicsRegisterFunction(${1:my_asub_routine});
+      '''
+
+  ####################################
+  #### DB file snippets ###
+  ####################################
+
 '.source.db':
   'record body':
-    'prefix': 'r'
-    'body': 'record(${1:type}, "${2:NAME}") {\n\t${3}\n}'
+    'prefix': 'record'
+    'body': 'record(${1:record_type}, "${2:record_name}") {\n\t${3}\n}'
 
-  'field':
-    'prefix': 'f'
-    'body': 'field(${1:NAME},\t"${2:value}")${3}'
+  'macro':
+    'prefix': 'macro'
+    'body': '$(${1:MACRO})${2}'
 
-  'array analog input':
-    'prefix': 'raai'
-    'body': 'record(aai, "${1:NAME}") {\n\t${2}\n}'
+  #### fields ###
 
-  'array analog output':
-    'prefix': 'raao'
-    'body': 'record(aai, "${1:NAME}") {\n\t${2}\n}'
+  'generic field':
+    'prefix': 'field'
+    'body': 'field(${1:record_name},\t"${1:value}")${2}'
 
-  'analog input':
-    'prefix': 'rai'
-    'body': 'record(aai, "${1:NAME}") {\n\t${2}\n}'
+  'description field':
+    'prefix': 'desc'
+    'body': 'field(DESC,\t"${1:description}")${2}'
 
-  'analog output':
-    'prefix': 'rao'
-    'body': 'record(aai, "${1:NAME}") {\n\t${2}\n}'
+  'precision field':
+    'prefix': 'prec'
+    'body': 'field(PREC,\t"${1:precision}")${2}'
 
-  'array subroutine':
-    'prefix': 'ras'
-    'body': 'record(asub, "${1:NAME}") {\n\t${2}\n}'
+  'engineering units field':
+    'prefix': 'egu'
+    'body': 'field(EGU,\t"${1:unit}")${2}'
+
+  'pini field':
+    'prefix': 'pini'
+    'body': 'field(PINI,\t"${1:YES}${2:NO}")${3}'
+
+  'fwd link field':
+    'prefix': 'fwd'
+    'body': 'field(FLNK,\t"${1:record_name}")${2}'
+
+  'scan field':
+    'prefix': 'scan'
+    'body': 'field(SCAN,\t"${1:.1 second}${2:.2 second}${3:.5 second}${4:1 second}${5:2 second}${6:5 second}${7:10 second}${8:I/O Intr}${9:Event}${10:Passive}")${11}'
+
+  'input link field':
+    'prefix': 'inp'
+    'body': 'field(INP,\t"${1:record_name}")${2}'
+
+  'output link field':
+    'prefix': 'out'
+    'body': 'field(OUT,\t"${1:record_name}")${2}'
+
+  'dtyp field':
+    'prefix': 'dtyp'
+    'body': 'field(DTYP,\t"${1:Soft Channel}${2:stream}")${3}'
+
+  'dol field':
+    'prefix': 'dol'
+    'body': 'field(DOL,\t"${1:record_name}")${2}'
+
+  'selection mechanism field':
+    'prefix': 'selm'
+    'body': 'field(SELM,\t"${1:All}${2:Specified}${3:Mask}")${4}'
+
+  'osml field':
+    'prefix': 'omsl'
+    'body': 'field(OMSL,\t"${1:Supervisory}${2:closed_loop}")${3}'
+
+  'hihi alarm limit field':
+    'prefix': 'hihi'
+    'body': 'field(HIHI,\t"${1:float}")${2}'
+
+  'high alarm limit field':
+    'prefix': 'hihi'
+    'body': 'field(HIGH,\t"${1:float}")${2}'
+
+  'low alarm limit field':
+    'prefix': 'low'
+    'body': 'field(LOW,\t"${1:float}")${2}'
+
+  'lolo alarm limit field':
+    'prefix': 'hihi'
+    'body': 'field(LOLO,\t"${1:float}")${2}'
+
+  'hihi alarm severity field':
+    'prefix': 'hhsv'
+    'body': 'field(HHSV,\t"${1:NO_ALARM}${2:MINOR}${3:MAJOR}")${4}'
+
+  'high alarm severity field':
+    'prefix': 'hsv'
+    'body': 'field(HSV,\t"${1:NO_ALARM}${2:MINOR}${3:MAJOR}")${4}'
+
+  'low alarm severity field':
+    'prefix': 'lsv'
+    'body': 'field(LSV,\t"${1:NO_ALARM}${2:MINOR}${3:MAJOR}")${4}'
+
+  'lolo alarm severity field':
+    'prefix': 'llsv'
+    'body': 'field(LLSV,\t"${1:NO_ALARM}${2:MINOR}${3:MAJOR}")${4}'
+
+  'alarm deadband field':
+    'prefix': 'hyst'
+    'body': 'field(HYST,\t"${1:double")${2}'
+
+  'all alarms field':
+    'prefix': 'alarms'
+    'body': '''
+      field(HIHI,\t"${1:float}")
+      field(HIGH,\t"${2:float}")
+      field(LOW,\t"${3:float}")
+      field(LOLO,\t"${4:float}")
+      field(HHSV,\t"${5:NO_ALARM}${6:MINOR}${7:MAJOR}")
+      field(HSV,\t"${8:NO_ALARM}${9:MINOR}${10:MAJOR}")
+      field(LSV,\t"${11:NO_ALARM}${12:MINOR}${13:MAJOR}")
+      field(LLSV,\t"${14:NO_ALARM}${15:MINOR}${16:MAJOR}")
+      field(HYST,\t"${17:double}")${17}
+      '''
+
+  ### specific records ###
 
   'binary input':
-    'prefix': 'rbi'
-    'body': 'record(bi, "${1:NAME}") {\n\t${2}\n}'
-
+    'prefix': 'bi'
+    'body': '''
+      record(bi,\t"${1:record_name}") {
+      \tfield(DESC,\t"${2:description}")
+      \tfield(VAL,\t"${3:value}")
+      \tfield(ONAM,\t"${4:one_name}")
+      \tfield(ZNAM,\t"${5:zero_name}")
+      }${6}
+      '''
   'binary output':
-    'prefix': 'rbo'
-    'body': 'record(bo, "${1:NAME}") {\n\t${2}\n}'
+    'prefix': 'bo'
+    'body': '''
+      record(bo,\t"${1:record_name}") {
+      \tfield(DESC,\t"${2:description}")
+      \tfield(VAL,\t"${3:value}")
+      \tfield(ONAM,\t"${4:one_name}")
+      \tfield(ZNAM,\t"${5:zero_name}")
+      }${6}
+      '''
+
+  'aSub Record':
+    'prefix': 'asub'
+    'body': '''
+      record(asub,\t"${1:record_name}") {
+      \tfield(DESC,\t"${2:description}")
+      \tfield(SNAM,\t"${3:my_asub_routine}")
+      \tfield(INPA,\t"${4:record_name}")
+      \tfield(FTA,\t"${5:STRING}${6:CHAR}${7:UCHAR}${8:SHORT}${9:USHORT}${10:LONG}${11:ULONG}${12:FLOAT}${13:DOUBLE}${14:ENUM}")
+      \tfield(NOA,\t"${15:number_of_element}")
+      \tfield(OUTA,\t"${16:record_name}")
+      \tfield(FTVA,\t"${17:STRING}${18:CHAR}${19:UCHAR}${20:SHORT}${21:USHORT}${22:LONG}${23:ULONG}${24:FLOAT}${25:DOUBLE}${26:ENUM}")
+      \tfield(NOVA,\t"${27:number_of_element}")
+      }${28}
+      '''
 
   'calculation':
-    'prefix': 'rc'
-    'body': 'record(calc, "${1:NAME}") {\n\t${2}\n}'
+    'prefix': 'calc'
+    'body': '''
+      record(calc,\t"${1:record_name}") {
+      \tfield(DESC,\t"${2:description}")
+      \tfield(CALC,\t"${3:a+b}")
+      \tfield(INPA,\t"${4:record_name}")
+      \tfield(INPB,\t"${5:record_name}")
+      }${6}
+      '''
 
   'calculation output':
-    'prefix': 'rco'
-    'body': 'record(calcout, "${1:NAME}") {\n\t${2}\n}'
-
-  'compression':
-    'prefix': 'rcomp'
-    'body': 'record(compress, "${1:NAME}") {\n\t${2}\n}'
+    'prefix': 'calcout'
+    'body': '''
+      record(calcout,\t"${1:record_name}") {
+      \tfield(DESC,\t"${2:description}")
+      \tfield(CALC,\t"${3:a+b}")
+      \tfield(INPA,\t"${4:record_name}")
+      \tfield(INPB,\t"${5:record_name}")
+      \tfield(OUT,\t"${6:record_name}")
+      }${7}
+      '''
 
   'data fanout':
-    'prefix': 'rdf'
-    'body': 'record(dfanout, "${1:NAME}") {\n\t${2}\n}'
-
-  'event':
-    'prefix': 'rev'
-    'body': 'record(event, "${1:NAME}") {\n\t${2}\n}'
+    'prefix': 'dfanout'
+    'body': '''
+      record(dfanout,\t"${1:record_name}") {
+      \tfield(DESC,\t"${2:description}")
+      \tfield(OUTA,\t"${3:record_name}")
+      \tfield(OUTB,\t"${4:record_name}")
+      \tfield(DOL,\t"${5:record_name}")
+      \tfield(OMSL,\t"${6:Supervisory}${7:Closed_loop}")
+      }${8}
+      '''
 
   'fanout':
-    'prefix': 'rf'
-    'body': 'record(fanout, "${1:NAME}") {\n\t${2}\n}'
-
-  'histogram':
-    'prefix': 'rh'
-    'body': 'record(histogram, "${1:NAME}") {\n\t${2}\n}'
-
-  'longin':
-    'prefix': 'rli'
-    'body': 'record(longin, "${1:NAME}") {\n\t${2}\n}'
-
-  'longout':
-    'prefix': 'rlo'
-    'body': 'record(longout, "${1:NAME}") {\n\t${2}\n}'
-
-  'multi-bit bi':
-    'prefix': 'rmbi'
-    'body': 'record(mbbi, "${1:NAME}") {\n\t${2}\n}'
-
-  'multi-bit bi direct':
-    'prefix': 'rmbid'
-    'body': 'record(mbbiDirect, "${1:NAME}") {\n\t${2}\n}'
-
-  'multi-bit bo':
-    'prefix': 'rmbo'
-    'body': 'record(mbbo, "${1:NAME}") {\n\t${2}\n}'
-
-  'multi-bit bo direct':
-    'prefix': 'rmbod'
-    'body': 'record(mbboDirect, "${1:NAME}") {\n\t${2}\n}'
-
-  'permisive':
-    'prefix': 'rp'
-    'body': 'record(permisive, "${1:NAME}") {\n\t${2}\n}'
+    'prefix': 'fanout'
+    'body': '''
+      record(fanout,\t"${1:record_name}") {
+      \tfield(DESC,\t"${2:description}")
+      \tfield(SELM,\t"${3:All}${4:Specified}${5:Mask}")
+      \tfield(SELN,\t"${6:1}")
+      \tfield(SELL,\t"${7:record_name}")
+      \tfield(LNKA,\t"${8:record_name}")
+      \tfield(LNKB,\t"${9:record_name}")
+      }${10}
+      '''
 
   'select':
-    'prefix': 'rsel'
-    'body': 'record(sel, "${1:NAME}") {\n\t${2}\n}'
+    'prefix': 'sel'
+    'body': '''
+      record(sel,\t"${1:record_name}") {
+      \tfield(DESC,\t"${2:description}")
+      \tfield(SELM,\t"${3:All}${4:Specified}${5:Mask}")
+      \tfield(SELN,\t"${6:1}")
+      \tfield(SELL,\t"${7:record_name}")
+      \tfield(INPA,\t"${8:record_name}")
+      \tfield(INPB,\t"${9:record_name}")
+      \tfield(INPC,\t"${10:record_name}")
+      }${11}
+      '''
 
   'sequence':
-    'prefix': 'rseq'
-    'body': 'record(seq, "${1:NAME}") {\n\t${2}\n}'
-
-  'state':
-    'prefix': 'rstate'
-    'body': 'record(state, "${1:NAME}") {\n\t${2}\n}'
-
-  'string input':
-    'prefix': 'rsi'
-    'body': 'record(stringin, "${1:NAME}") {\n\t${2}\n}'
-
-  'string output':
-    'prefix': 'rso'
-    'body': 'record(stringout, "${1:NAME}") {\n\t${2}\n}'
-
-  'subb-array':
-    'prefix': 'rsub'
-    'body': 'record(sub, "${1:NAME}") {\n\t${2}\n}'
+    'prefix': 'seq'
+    'body': '''
+      record(seq,\t"${1:record_name}") {
+      \tfield(DESC,\t"${2:description}")
+      \tfield(SELM,\t"${3:All}${4:Specified}${5:Mask}")
+      \tfield(SELN,\t"${6:1}")
+      \tfield(SELL,\t"${7:record_name}")
+      \tfield(DLY1,\t"${8:double}")
+      \tfield(DOL1,\t"${9:record_name}")
+      \tfield(LNK1,\t"${10:record_name}")
+      \tfield(DLY2,\t"${11:double}")
+      \tfield(DOL2,\t"${12:record_name}")
+      \tfield(LNK2,\t"${13:record_name}")
+      }${14}
+      '''
 
   'waveform':
-    'prefix': 'rw'
-    'body': 'record(waveform, "${1:NAME}") {\n\t${2}\n}'
+    'prefix': 'waveform'
+    'body': '''
+      record(waveform,\t"${1:record_name}") {
+      \tfield(DESC,\t"${2:description}")
+      \tfield(NELM,\t"${3:256}")
+      \tfield(FTVL,\t"${4:FLOAT}")
+      }${5}
+      '''
