@@ -169,7 +169,7 @@
   'aSub Record':
     'prefix': 'asub'
     'body': '''
-      record(asub,\t"${1:record_name}") {
+      record(aSub,\t"${1:record_name}") {
       \tfield(DESC,\t"${2:description}")
       \tfield(SNAM,\t"${3:my_asub_routine}")
       \tfield(INPA,\t"${4:record_name}")

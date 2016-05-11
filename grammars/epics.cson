@@ -5,35 +5,57 @@
 'name': 'EPICS Database'
 'fileTypes': [
   'db'
+  'dbd'
+  'template'
 ]
 'patterns': [
   {
     'match':  '(#.*)'
-    'name':   'Comment'
+    'name':   'comment'
   }
-
   {
-    'comment': 'Record pattern'
-    'match': '(record)(.*?)((?:[a-z][a-z0-9_]*))(.*?)("(.*?)")(.*?)(\\{)'
-    'captures':
+    'begin': '(record)'
+    'beginCaptures':
       '1':
-       'name': 'storage'
-      '3':
-       'name': 'entity.name.class'
-      '5':
-        'name': 'entity.other.attribute-name'
+        'name': 'storage'
+    'end': '\\)'
+    'patterns': [
+      {
+        'include': '#recordType'
+      }
+      {
+        'include': '#recordName'
+      }
+    ]
   }
-
   {
-    'comment': 'Field pattern'
-    'match': '(field).*?\\((.*?)(\\w+).*?,.*?"(.+)".*?\\)'
-    'captures':
+    'begin': '(field)'
+    'beginCaptures':
       '1':
-       'name': 'entity.name.function'
-      '3':
-       'name': 'variable'
-      '4':
-        'name': 'variable.parameter.function'
+        'name': 'entity.name.function'
+    'end': '\\)'
+    'patterns': [
+      {
+        'include': '#fieldType'
+      }
+      {
+        'include': '#fieldValue'
+      }
+    ]
   }
-
 ]
+
+'repository':
+  'recordType':
+    'match': '\\b(aai|aao|ai|ao|aSub|bi|bo|calc|calcout|compress|dfanout|event|fanout|histogram|longin|longout|mbbi|mbbiDirect|mbbo|mbboDirect|permissive|sel|seq|state|stringin|stringout|subArray|sub|waveform|archive|asyn|cpid|pid|pulseCounter|pulseDelay|pulseTrain|scan|steppermotor|timer|wait|alive|acalcout|busy|camac|digitel|dxp|epid|mca|motor|scalcout|scaler|sscan|scanparm|sseq|swait|table|transform|vme|vs)\\b'
+    'name': 'entity.name.class'
+  'recordName':
+    'match': '"(.*?)"'
+    'name': 'string'
+  'fieldType':
+    'match': '(.*?)\\,'
+    'name': 'variable'
+  'fieldValue':
+    'match': '"(.*?)"'
+    'name': 'variable.parameter.function'
+
