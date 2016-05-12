@@ -11,8 +11,9 @@ Available snippets
 | ------------- |---------------------------    | --------------------------------------------------------------------------------------------------|
 | record        | generic record                | record(record_type "record_name") { }                                                             |
 | macro         | generic macro                 | $(MACRO)                                                                                          |
-| field         | generic field                 | field(field_type,  "value")                                                                       |
+| field         | generic field                 | field(field_type,  "field_value")                                                                       |
 | desc          | description field             | field(DESC,  "description")                                                                       |
+| val          | value field                    | field(VAL,  "value")                                                                       |
 | prec          | precision field               | field(PREC,  "precision")                                                                         |
 | egu           | engineering units field       | field(EGU,  "unit")                                                                               |
 | pini          | pini field                    | field(PINI,  "YESNO")                                                                             |
