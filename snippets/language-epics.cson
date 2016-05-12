@@ -49,6 +49,10 @@
     'prefix': 'desc'
     'body': 'field(DESC,\t"${1:description}")${2}'
 
+  'value field':
+    'prefix': 'val'
+    'body': 'field(VAL,\t"${1:value}")${2}'
+    
   'precision field':
     'prefix': 'prec'
     'body': 'field(PREC,\t"${1:precision}")${2}'
