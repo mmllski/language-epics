@@ -43,7 +43,7 @@
 
   'generic field':
     'prefix': 'field'
-    'body': 'field(${1:record_name},\t"${1:value}")${2}'
+    'body': 'field(${1:field_type},\t"${1:value}")${2}'
 
   'description field':
     'prefix': 'desc'
@@ -89,7 +89,7 @@
     'prefix': 'selm'
     'body': 'field(SELM,\t"${1:All}${2:Specified}${3:Mask}")${4}'
 
-  'osml field':
+  'omsl field':
     'prefix': 'omsl'
     'body': 'field(OMSL,\t"${1:Supervisory}${2:closed_loop}")${3}'
 
@@ -98,7 +98,7 @@
     'body': 'field(HIHI,\t"${1:float}")${2}'
 
   'high alarm limit field':
-    'prefix': 'hihi'
+    'prefix': 'high'
     'body': 'field(HIGH,\t"${1:float}")${2}'
 
   'low alarm limit field':
@@ -106,7 +106,7 @@
     'body': 'field(LOW,\t"${1:float}")${2}'
 
   'lolo alarm limit field':
-    'prefix': 'hihi'
+    'prefix': 'lolo'
     'body': 'field(LOLO,\t"${1:float}")${2}'
 
   'hihi alarm severity field':
@@ -127,7 +127,7 @@
 
   'alarm deadband field':
     'prefix': 'hyst'
-    'body': 'field(HYST,\t"${1:double")${2}'
+    'body': 'field(HYST,\t"${1:double}")${2}'
 
   'all alarms field':
     'prefix': 'alarms'
