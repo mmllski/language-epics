@@ -43,7 +43,7 @@
 
   'generic field':
     'prefix': 'field'
-    'body': 'field(${1:field_type},\t"${1:field_value}")${2}'
+    'body': 'field(${1:field_type},\t"${2:field_value}")${3}'
 
   'description field':
     'prefix': 'desc'
@@ -52,7 +52,7 @@
   'value field':
     'prefix': 'val'
     'body': 'field(VAL,\t"${1:value}")${2}'
-    
+
   'precision field':
     'prefix': 'prec'
     'body': 'field(PREC,\t"${1:precision}")${2}'

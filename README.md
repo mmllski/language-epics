@@ -3,7 +3,19 @@ EPICS Database support in Atom
 
 Add syntax highlighting and snippets to *.db files in Atom.
 
+Preview
+---
+
 ![demo](https://j.gifs.com/kRlojN.gif)
+
+Installation
+---
+
+```sh
+apm install language-epics
+```
+
+or find it in the Packages tab under Settings.
 
 Available snippets
 ---
